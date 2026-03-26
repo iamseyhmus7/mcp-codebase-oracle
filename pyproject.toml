@@ -1,0 +1,116 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-codebase-oracle"
+version = "0.1.0"
+description = "🔮 MCP sunucusu — Herhangi bir codebase'i analiz et, mimariyi çıkar, etki analizi yap"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [
+    { name = "MCP Codebase Oracle Contributors" }
+]
+keywords = [
+    "mcp",
+    "codebase-analysis",
+    "ast",
+    "dependency-graph",
+    "impact-analysis",
+    "architecture",
+    "legacy-code",
+    "code-intelligence"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Quality Assurance",
+]
+
+dependencies = [
+    "mcp[cli]>=1.2.0",
+    "networkx>=3.2",
+    "gitpython>=3.1",
+    "diskcache>=5.6",
+    "pathspec>=0.12",
+    "rich>=13.0",
+    "platformdirs>=4.0",
+]
+
+[project.optional-dependencies]
+tree-sitter = [
+    "tree-sitter>=0.24",
+    "tree-sitter-python>=0.23",
+    "tree-sitter-javascript>=0.23",
+    "tree-sitter-typescript>=0.23",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "mypy>=1.10",
+]
+all = [
+    "mcp-codebase-oracle[tree-sitter,dev]",
+]
+
+[project.scripts]
+mcp-codebase-oracle = "mcp_codebase_oracle.server:main"
+
+[project.urls]
+Homepage = "https://github.com/mcp-codebase-oracle/mcp-codebase-oracle"
+Repository = "https://github.com/mcp-codebase-oracle/mcp-codebase-oracle"
+Issues = "https://github.com/mcp-codebase-oracle/mcp-codebase-oracle/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_codebase_oracle"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/mcp_codebase_oracle"]
+
+[tool.hatch.build]
+sources = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "N",    # pep8-naming
+    "UP",   # pyupgrade
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "RUF",  # ruff-specific rules
+]
+ignore = [
+    "RUF001", # Ambiguous unicode character in string
+    "RUF002", # Ambiguous unicode character in docstring
+    "RUF003", # Ambiguous unicode character in comment
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["mcp_codebase_oracle"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
