@@ -23,7 +23,7 @@ MCP Codebase Oracle, herhangi bir yazılım projesini analiz eden, mimari yapıy
 
 ```bash
 # Projeyi klonla
-git clone https://github.com/mcp-codebase-oracle/mcp-codebase-oracle.git
+git clone https://github.com/iamseyhmus7/mcp-codebase-oracle.git
 cd mcp-codebase-oracle
 
 # Bağımlılıkları kur
