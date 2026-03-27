@@ -21,15 +21,7 @@ logging.basicConfig(
 logger = logging.getLogger("mcp_codebase_oracle")
 
 # Create MCP server instance
-mcp = FastMCP(
-    "Codebase Oracle",
-    version=__version__,
-    description=(
-        "🔮 Herhangi bir codebase'i analiz et — mimariyi çıkar, "
-        "bağımlılık grafını oluştur, etki analizi yap. "
-        "Legacy code'u anlaşılır hale getir."
-    ),
-)
+mcp = FastMCP("Codebase Oracle")
 
 # ═══════════════════════════════════════════════════════════════════════
 # Tool imports — her tool modülü kendi @mcp.tool() dekoratörlerini
