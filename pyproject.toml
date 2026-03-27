@@ -66,18 +66,15 @@ all = [
 mcp-codebase-oracle = "mcp_codebase_oracle.server:main"
 
 [project.urls]
-Homepage = "https://github.com/mcp-codebase-oracle/mcp-codebase-oracle"
-Repository = "https://github.com/mcp-codebase-oracle/mcp-codebase-oracle"
-Issues = "https://github.com/mcp-codebase-oracle/mcp-codebase-oracle/issues"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/mcp_codebase_oracle"]
-
-[tool.hatch.build.targets.sdist]
-include = ["src/mcp_codebase_oracle"]
+Homepage = "https://github.com/iamseyhmus7/mcp-codebase-oracle"
+Repository = "https://github.com/iamseyhmus7/mcp-codebase-oracle"
+Issues = "https://github.com/iamseyhmus7/mcp-codebase-oracle/issues"
 
 [tool.hatch.build]
 sources = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_codebase_oracle"]
 
 [tool.ruff]
 target-version = "py311"
